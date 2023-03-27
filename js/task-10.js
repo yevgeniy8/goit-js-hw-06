@@ -6,19 +6,31 @@ const divBoxesEl = document.querySelector('#boxes');
 buttonCreateEl.addEventListener('click', createBoxes);
 buttonDestroyEl.addEventListener('click', destroyBoxes);
 
+let numOfClicks = 0;
+
 function createBoxes(amount) {
     amount = inputEl.value;
+	
+	function createBox() {
+		for (let i = 0; i < amount; i += 1) {
+            const markup = document.createElement('div');
+            const size = 30 + 10 * i;
+            divBoxesEl.append(markup);
 
-    for (let i = 0; i < amount; i += 1) {
-        const markup = document.createElement('div');
-        const size = 30 + 10 * i;
-        divBoxesEl.append(markup);
+            markup.style.width = `${size}px`;
+            markup.style.height = `${size}px`;
+            markup.style.backgroundColor = getRandomHexColor();
 
-        markup.style.width = `${size}px`;
-        markup.style.height = `${size}px`;
-        markup.style.backgroundColor = getRandomHexColor();
+            console.log(markup);
+        }
+	}
 
-        console.log(markup);
+	createBox();
+
+    numOfClicks += 1;
+    if (numOfClicks >= 2) {
+        divBoxesEl.innerHTML = '';
+		createBox();
     }
 }
 

@@ -3,7 +3,7 @@ const inputEl = document.querySelector('#validation-input');
 inputEl.addEventListener('blur', onCheckValidation);
 
 function onCheckValidation(event) {
-    if (event.currentTarget.value.length >= Number(event.currentTarget.dataset.length)) {
+    if (event.currentTarget.value.length === Number(event.currentTarget.dataset.length)) {
         event.currentTarget.classList.add('valid');
 
         if (event.currentTarget.classList.contains('invalid')) {
